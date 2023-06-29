@@ -14,7 +14,7 @@ export default function withAuthorization(
     if (requireAuth.some((path) => pathname.startsWith(path))) {
       const token = request.cookies.get("access_token")?.value;
       if (!token) {
-        const url = new URL(`/`, request.url);
+        const url = new URL(`/web`, request.url);
         return NextResponse.redirect(url);
       }
     }

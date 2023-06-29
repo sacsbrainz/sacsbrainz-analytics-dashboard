@@ -41,8 +41,8 @@ function Login() {
       )
       .then((res) => {
         if (res.data.success) {
+          router.push("/web/dashboard");
           setIsLoading(false);
-          router.push("/dashboard");
         }
       })
       .catch((e) => {

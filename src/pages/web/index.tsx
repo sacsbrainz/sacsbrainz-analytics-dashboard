@@ -19,7 +19,7 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<LoginProps>({ username: "", password: "" });
   const sound = new Howl({
-    src: ["sound.mp3"],
+    src: ["/web/sound.mp3"],
     onend: () => {
       setIsLoading(false);
     },
@@ -87,7 +87,7 @@ function Login() {
         Login
       </button>
       <button
-      disabled={isLoading}
+        disabled={isLoading}
         onClick={() => {
           setIsLoading(true);
           sound.play();
@@ -95,7 +95,7 @@ function Login() {
             autoClose: 10000,
           });
         }}
-        className="absolute disabled:opacity-25 right-5 top-10 rounded-xl border p-3 text-xs shadow-lg"
+        className="absolute right-5 top-10 rounded-xl border p-3 text-xs shadow-lg disabled:opacity-25"
       >
         Register
       </button>

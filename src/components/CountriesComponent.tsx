@@ -97,7 +97,6 @@ function CountriesComponent() {
             {data?.map((item, index) => (
               <button
                 key={index}
-                // style={{ opacity: (data.length - index) * 0.4 }}
                 className=" px-4 hover:border-l-2 hover:border-l-black"
               >
                 <div className="flex w-full items-center justify-between rounded-lg bg-gray-100 px-3 py-3">
@@ -105,7 +104,7 @@ function CountriesComponent() {
                     <span className="text-xs">
                       {getCountryFlag(item.country)}{" "}
                     </span>
-                    <span className="text-xs"> {item.country}</span>
+                    <span className="break-all text-xs"> {item.country}</span>
                   </div>
                   <span className="text-sm font-semibold">{item.count}</span>
                 </div>

@@ -88,11 +88,10 @@ function BrowsersComponent() {
             {data?.map((item, index) => (
               <button
                 key={index}
-                // style={{ opacity: (data.length - index) * 0.4 }}
                 className=" px-4 hover:border-l-2 hover:border-l-black"
               >
                 <div className="flex w-full items-center justify-between rounded-lg bg-gray-100 px-3 py-3">
-                  <span className="text-xs">{item.browser}</span>
+                  <span className="break-all text-xs">{item.browser}</span>
                   <span className="text-sm font-semibold">{item.count}</span>
                 </div>
               </button>

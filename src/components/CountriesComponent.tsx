@@ -4,6 +4,7 @@ import { cn, getDateToAndFrom } from "@/lib/utils";
 import { statDateRange } from "@/recoil/atom";
 import { StandardApi } from "@/types/types";
 import axios from "axios";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
@@ -17,6 +18,8 @@ interface CountriesProps extends StandardApi {
 function CountriesComponent() {
   const [isLoading, setIsLoading] = useState(false);
   const dateRange = useRecoilValue(statDateRange);
+  const router = useRouter();
+  const id = router.query.id as string;
 
   const [data, setData] = useState<
     | {
@@ -36,6 +39,7 @@ function CountriesComponent() {
         params: {
           from: range[0],
           to: range[1],
+          id,
         },
       })
       .then((res) => {
@@ -51,8 +55,9 @@ function CountriesComponent() {
   };
 
   useEffect(() => {
+    if (!id) return;
     void fetchDataFilteredByDate();
-  }, [dateRange]);
+  }, [dateRange, id]);
 
   const getCountryFlag = (country: string) => {
     const countryObj = countries.find(

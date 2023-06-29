@@ -51,7 +51,7 @@ export function getDateToAndFrom(date:string): string[]{
   }
   else if(date === "all"){
     const today = new Date();
-    const allTime = new Date(0);
+    const allTime = new Date("2021-06-01");
     return [allTime.toISOString(), today.toISOString()];
   }
   else{

@@ -1,6 +1,7 @@
 import { env } from "@/env.mjs";
 import axios from "axios";
 import { Howl } from "howler";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -19,7 +20,7 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<LoginProps>({ username: "", password: "" });
   const sound = new Howl({
-    src: ["/web/sound.mp3"],
+    src: ["sound.mp3"],
     onend: () => {
       setIsLoading(false);
     },
@@ -53,6 +54,11 @@ function Login() {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-4">
+      <Head>
+        <title>Analytics Login</title>
+        <meta name="description" content="Analytics Login" />
+        <link rel="icon" href="favicon.ico" />
+      </Head>
       <label htmlFor="username">Username</label>
       <input
         className="rounded-full border px-10 py-3 font-semibold no-underline transition hover:bg-white/20"

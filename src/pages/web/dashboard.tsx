@@ -52,7 +52,7 @@ export default function Home() {
       <Head>
         <title>Analytics Dashboard</title>
         <meta name="description" content="Analytics Dashboard" />
-        <link rel="icon" href="/web/favicon.ico" />
+        <link rel="icon" href="favicon.ico" />
       </Head>
       <main className="mx-auto  flex flex-col p-4   lg:container">
         <h1 className=" my-5 text-xl font-bold">Web Analytics</h1>

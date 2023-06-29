@@ -181,8 +181,8 @@ function MainComponent() {
             </button>
             <div className="hidden md:block" />
           </div>
-          <div className="my-6 flex h-[300px] ">
-            <ResponsiveContainer height={300}>
+          <div className="my-6 flex h-[300px] w-full ">
+            <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={currentTimeSeriesData ?? []}>
                 <CartesianGrid vertical={false} strokeDasharray="3 3" />{" "}
                 {/* Disable vertical grid lines */}

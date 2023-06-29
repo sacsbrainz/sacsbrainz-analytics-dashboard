@@ -69,7 +69,7 @@ export default function Home() {
           {isLoading ? (
             <div className="h-5 w-36 animate-pulse rounded-md bg-gray-200"></div>
           ) : (
-            <Link target="_" href={`http://${data?.url}`}>
+            <Link target="_" className="break-all" href={`http://${data?.url}`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="mr-2 inline-block h-4 w-4"

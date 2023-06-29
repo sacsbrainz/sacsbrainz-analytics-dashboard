@@ -2,7 +2,6 @@ import { env } from "@/env.mjs";
 import { StandardApi } from "@/types/types";
 import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 interface DashboardProps extends StandardApi {
@@ -86,7 +85,7 @@ function Index() {
               className=" flex flex-col gap-3 rounded-md border px-4 py-6 shadow-md shadow-violet-700"
               href={`/web/dashboard/${data.id}`}
             >
-              <span className="font-bold">{data.url}</span>
+              <span className="break-all font-bold">{data.url}</span>
               <span>Total visitors: {data._count.analytic}</span>
             </Link>
           ))}

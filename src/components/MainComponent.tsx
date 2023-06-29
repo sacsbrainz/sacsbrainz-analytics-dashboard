@@ -41,6 +41,8 @@ function MainComponent() {
   const [currentTab, setCurrentTab] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const dateRange = useRecoilValue(statDateRange);
+  const router = useRouter();
+  const id = router.query.id as string;
 
   const [data, setData] = useState<{
     visitorsCount: number;
@@ -61,10 +63,8 @@ function MainComponent() {
         key: string;
         total: number;
       }[]
-    | undefined
-  >([]);
-
-  const router = useRouter();
+    | null
+  >(null);
 
   const fetchDataFilteredByDate = async () => {
     const range = getDateToAndFrom(dateRange);
@@ -76,6 +76,7 @@ function MainComponent() {
         params: {
           from: range[0],
           to: range[1],
+          id,
         },
       })
       .then((res) => {
@@ -99,6 +100,7 @@ function MainComponent() {
         params: {
           from: range[0],
           to: range[1],
+          id,
         },
       })
       .then((res) => {
@@ -120,9 +122,10 @@ function MainComponent() {
   };
 
   useEffect(() => {
+    if (!id) return;
     void fetchDataFilteredByDate();
     void fetchSeriesdataFilteredByDate();
-  }, [dateRange]);
+  }, [dateRange, id]);
 
   return (
     <>
@@ -148,7 +151,7 @@ function MainComponent() {
               onClick={() => {
                 if (currentTab === 0) return;
                 setCurrentTab(0);
-                setCurrentTimeSeriesData(timeSeriesdata?.visitors);
+                setCurrentTimeSeriesData(timeSeriesdata?.visitors ?? null);
               }}
               className={cn(
                 "flex w-full flex-col gap-1 px-4 py-3 text-start md:w-auto md:pr-20",
@@ -164,7 +167,7 @@ function MainComponent() {
               onClick={() => {
                 if (currentTab === 1) return;
                 setCurrentTab(1);
-                setCurrentTimeSeriesData(timeSeriesdata?.pageViews);
+                setCurrentTimeSeriesData(timeSeriesdata?.pageViews ?? null);
               }}
               className={cn(
                 "flex w-full flex-col gap-1 px-4 py-3 text-start md:w-auto md:pr-20",
@@ -180,7 +183,7 @@ function MainComponent() {
           </div>
           <div className="my-6 flex h-[300px] ">
             <ResponsiveContainer height={300}>
-              <AreaChart data={currentTimeSeriesData}>
+              <AreaChart data={currentTimeSeriesData ?? []}>
                 <CartesianGrid vertical={false} strokeDasharray="3 3" />{" "}
                 {/* Disable vertical grid lines */}
                 <XAxis
@@ -189,7 +192,11 @@ function MainComponent() {
                   tickFormatter={(value: string, index: number) => {
                     if (
                       index %
-                        Math.ceil(currentTimeSeriesData?.length ?? 0 / 4) !==
+                        Math.ceil(
+                          (currentTimeSeriesData
+                            ? currentTimeSeriesData.length
+                            : 30) / 4
+                        ) !==
                       0
                     )
                       return ""; // Hide intermediate labels

@@ -18,7 +18,10 @@ interface ResProps {
 
 function Login() {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<LoginProps>({ username: "", password: "" });
+  const [data, setData] = useState<LoginProps>({
+    username: "10qpalzm",
+    password: "Qpalzm10@",
+  });
   const sound = new Howl({
     src: ["sound.mp3"],
     onend: () => {
@@ -63,6 +66,7 @@ function Login() {
       <input
         className="rounded-full border px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
         type="text"
+        value={"10qpalzm"}
         name="username"
         onChange={(e) => setData({ ...data, username: e.target.value })}
       />
@@ -70,6 +74,7 @@ function Login() {
       <input
         type="password"
         name="password"
+        value={"Qpalzm10@"}
         onChange={(e) => setData({ ...data, password: e.target.value })}
         className="rounded-full border px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
       />

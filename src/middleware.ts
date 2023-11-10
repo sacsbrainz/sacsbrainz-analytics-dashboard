@@ -4,4 +4,4 @@ const mainMiddleware: NextMiddleware = (request) => {
   const res = NextResponse.next();
   return res;
 };
-export default withAuthorization(mainMiddleware, ["/web/dashboard"]);
+export default withAuthorization(mainMiddleware, ["/home"]);

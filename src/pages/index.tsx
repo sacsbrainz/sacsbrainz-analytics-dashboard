@@ -66,7 +66,7 @@ function Login() {
       <input
         className="rounded-full border px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
         type="text"
-        value={"10qpalzm"}
+        value={data.username}
         name="username"
         onChange={(e) => setData({ ...data, username: e.target.value })}
       />
@@ -74,7 +74,7 @@ function Login() {
       <input
         type="password"
         name="password"
-        value={"Qpalzm10@"}
+        value={data.password}
         onChange={(e) => setData({ ...data, password: e.target.value })}
         className="rounded-full border px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
       />

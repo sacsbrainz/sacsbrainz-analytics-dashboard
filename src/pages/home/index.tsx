@@ -83,7 +83,7 @@ function Index() {
             <Link
               key={index}
               className=" flex flex-col gap-3 rounded-md border px-4 py-6 shadow-md shadow-violet-700"
-              href={`/web/dashboard/${data.id}`}
+              href={`/home/${data.id}`}
             >
               <span className="break-all font-bold">{data.url}</span>
               <span>Total visitors: {data._count.analytic}</span>
